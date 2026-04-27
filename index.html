@@ -3,35 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Interface System</title>
+    <title>Saphire Proxy System</title>
     <style>
-        :root { --bg: #09090b; --surface: #18181b; --accent: #2563eb; --border: #27272a; }
-        body { margin: 0; background: var(--bg); color: white; font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-        header { background: var(--surface); padding: 12px 20px; display: flex; gap: 15px; border-bottom: 1px solid var(--border); align-items: center; }
-        .bar { flex-grow: 1; background: #000; border: 1px solid var(--border); border-radius: 6px; padding: 8px; display: flex; }
-        input { width: 100%; background: transparent; border: none; color: #3b82f6; outline: none; }
-        button { background: var(--accent); border: none; color: white; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        :root { --bg: #09090b; --surface: #18181b; --accent: #3b82f6; --border: #27272a; }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; height: 100vh; }
+        header { background: var(--surface); padding: 10px 20px; display: flex; gap: 15px; border-bottom: 1px solid var(--border); align-items: center; }
+        .bar { flex-grow: 1; background: #000; border: 1px solid var(--border); border-radius: 5px; padding: 5px 12px; }
+        input { width: 100%; background: transparent; border: none; color: #60a5fa; outline: none; font-size: 14px; }
+        button { background: var(--accent); border: none; color: white; padding: 7px 18px; border-radius: 4px; cursor: pointer; font-weight: 600; }
         iframe { flex-grow: 1; border: none; background: white; }
     </style>
 </head>
 <body>
     <header>
-        <div style="font-weight: bold; color: var(--accent);">ENGINE</div>
-        <div class="bar"><input type="text" id="url-input" placeholder="Enter URL (e.g., github.com)"></div>
-        <button onclick="launch()">Launch</button>
+        <div style="font-weight: 900; color: var(--accent); letter-spacing: 1px;">PROXY-WEB</div>
+        <div class="bar"><input type="text" id="target" placeholder="Enter URL (e.g., google.com)"></div>
+        <button onclick="go()">Go</button>
     </header>
-    <iframe id="viewport" src="about:blank"></iframe>
+    <iframe id="view" src="about:blank"></iframe>
 
     <script>
-        function launch() {
-            let url = document.getElementById('url-input').value.trim();
-            if (!url) return;
-            if (!url.startsWith('http')) url = 'https://' + url;
-            
-            // Python API'mize yönlendiriyoruz
-            document.getElementById('viewport').src = `/api/proxy?url=${encodeURIComponent(url)}`;
+        function go() {
+            let val = document.getElementById('target').value.trim();
+            if(!val) return;
+            if(!val.startsWith('http')) val = 'https://' + val;
+            document.getElementById('view').src = `/api/proxy?url=${encodeURIComponent(val)}`;
         }
-        document.getElementById('url-input').addEventListener('keypress', (e) => { if(e.key === 'Enter') launch(); });
+        document.getElementById('target').addEventListener('keypress', (e) => { if(e.key === 'Enter') go(); });
     </script>
 </body>
 </html>
