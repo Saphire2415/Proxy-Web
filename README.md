@@ -1,14 +1,15 @@
 # Open Source Browser Engine
 
 <p align="center">
-  <svg width="800" height="200" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
-    <rect width="800" height="200" rx="10" fill="#0f172a"/>
-    <path d="M300 70 L350 100 L300 130" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M450 70 L400 100 L450 130" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <line x1="385" y1="60" x2="365" y2="140" stroke="#1e293b" stroke-width="6" stroke-linecap="round"/>
-    <text x="400" y="170" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#f8fafc" text-anchor="middle">WEB ENGINE INTERFACE</text>
+  <svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#1e1e2e" />
+    <path d="M250 70 L220 100 L250 130" stroke="#89b4fa" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M550 70 L580 100 L550 130" stroke="#89b4fa" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="410" y1="60" x2="390" y2="140" stroke="#f5e0dc" stroke-width="8" stroke-linecap="round"/>
+    <text x="50%" y="175" font-family="Verdana, sans-serif" font-size="28" fill="#cdd6f4" text-anchor="middle" font-weight="bold">WEB ENGINE INTERFACE</text>
   </svg>
 </p>
+
 
 ## Overview
 This is a lightweight, open-source web browser interface designed for terminal-integrated environments. It provides a clean UI for navigating the web while utilizing a backend rendering engine.
