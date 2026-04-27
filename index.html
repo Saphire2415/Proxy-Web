@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Interface System</title>
+    <style>
+        :root { --bg: #09090b; --surface: #18181b; --accent: #2563eb; --border: #27272a; }
+        body { margin: 0; background: var(--bg); color: white; font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        header { background: var(--surface); padding: 12px 20px; display: flex; gap: 15px; border-bottom: 1px solid var(--border); align-items: center; }
+        .bar { flex-grow: 1; background: #000; border: 1px solid var(--border); border-radius: 6px; padding: 8px; display: flex; }
+        input { width: 100%; background: transparent; border: none; color: #3b82f6; outline: none; }
+        button { background: var(--accent); border: none; color: white; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        iframe { flex-grow: 1; border: none; background: white; }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="font-weight: bold; color: var(--accent);">ENGINE</div>
+        <div class="bar"><input type="text" id="url-input" placeholder="Enter URL (e.g., github.com)"></div>
+        <button onclick="launch()">Launch</button>
+    </header>
+    <iframe id="viewport" src="about:blank"></iframe>
+
+    <script>
+        function launch() {
+            let url = document.getElementById('url-input').value.trim();
+            if (!url) return;
+            if (!url.startsWith('http')) url = 'https://' + url;
+            
+            // Python API'mize yönlendiriyoruz
+            document.getElementById('viewport').src = `/api/proxy?url=${encodeURIComponent(url)}`;
+        }
+        document.getElementById('url-input').addEventListener('keypress', (e) => { if(e.key === 'Enter') launch(); });
+    </script>
+</body>
+</html>
